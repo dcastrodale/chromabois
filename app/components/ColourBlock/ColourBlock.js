@@ -11,12 +11,6 @@ const ColourBlock = style.li`
     margin: 30px 0;
     border: 1px solid #333;
     background-color: rgb(${props => props.rgb});
-    &:first-child {
-        margin-top: 0;
-    }
-    &:last-child {
-        margin-bottom: 0;
-    }
 `;
 
 ColourBlock.propTypes = {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const List = style.ul`
     display: inline-block;
-    padding: 30px;
+    padding: 0 30px;
     background-color: #FFF;
     border: 1px solid pink;
     margin: 0 auto;
