@@ -54,6 +54,7 @@ class App extends Component {
                 <AppWrapper>
                     <Header>
                         <H1>Colour Mixer</H1>
+                        <p>{this.props.UI.test}</p>
                     </Header>
                     <Lists>
                         <AvailableColoursList />
@@ -66,9 +67,10 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = ({ colours }) => {
+const mapStateToProps = ({ colours, UI }) => {
     return {
-        colours
+        colours,
+        UI
     }
 }
 

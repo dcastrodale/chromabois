@@ -6,6 +6,7 @@ import { selectColour } from '../../actions/Colours';
 
 import ColourList from '../../components/ColourList';
 import ColourBlock from '../../components/ColourBlock';
+import DraggableItem from '../../components/DraggableItem';
 
 class AvailableColoursList extends Component {
     handleClick(id) {
@@ -20,11 +21,13 @@ class AvailableColoursList extends Component {
         return (
             <ColourList title="available">
                 {available.map(colour => (
-                    <ColourBlock
-                        colour={colour}
-                        onClick={() => this.handleClick(colour.id)}
-                        key={colour.id}
-                    />
+                    <DraggableItem>
+                        <ColourBlock
+                            colour={colour}
+                            onClick={() => this.handleClick(colour.id)}
+                            key={colour.id}
+                        />
+                    </DraggableItem>
                 ))}
             </ColourList>
         );
