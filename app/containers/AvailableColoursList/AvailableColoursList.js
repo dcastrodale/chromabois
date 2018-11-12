@@ -21,7 +21,7 @@ class AvailableColoursList extends Component {
         return (
             <ColourList title="available">
                 {available.map(colour => (
-                    <DraggableItem>
+                    <DraggableItem key={colour.id}>
                         <ColourBlock
                             colour={colour}
                             onClick={() => this.handleClick(colour.id)}

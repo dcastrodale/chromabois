@@ -7,6 +7,7 @@ import getRGB from '../../helpers/getRGB';
 
 import AvailableColoursList from '../AvailableColoursList';
 import SelectedColoursList from '../SelectedColoursList';
+
 const AppOuter = styled.section`
     height: 100%;
     width: 100%;
@@ -18,6 +19,7 @@ const AppOuter = styled.section`
     transition: background-color 0.2s ease-in-out;
     position: relative;
 `;
+
 const AppWrapper = styled.div`
     min-height: 100%;
     width: 100%;
