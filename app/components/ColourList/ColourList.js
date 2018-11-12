@@ -29,10 +29,10 @@ const ColourList = ({ title, children }) => (
     </Wrapper>
 );
 
+// TO DO: React.memo messes up PropType checking...
 ColourList.propTypes = {
     title: PropTypes.string,
     children: PropTypes.array,
-    test: PropTypes.string.isRequired
 }
 
 export default React.memo(ColourList);
