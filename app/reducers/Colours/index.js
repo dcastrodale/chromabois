@@ -45,8 +45,9 @@ export default (state = initialState, action) => {
 
     switch (action.type) {
         case SELECT_COLOUR:
-            const selectedColour = available.filter(current => current.id === action.payload);
-            console.log(selected.concat(...selectedColour));
+            // Note that action.payload is a string so we're not using a strict equality here
+            const selectedColour = available.filter(current => current.id == action.payload);
+
             return {
                 ...state,
                 selected: selected.concat(...selectedColour),

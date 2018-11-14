@@ -11,6 +11,15 @@ const ColourBlock = style.li`
     margin: 30px 0;
     border: 1px solid #333;
     background-color: rgb(${props => props.rgb});
+
+    &.small {
+        width: 20px;
+        height: 20px;
+    }
+
+    &.dragging {
+        opacity: 0.5;
+    }
 `;
 
 ColourBlock.propTypes = {
@@ -18,9 +27,10 @@ ColourBlock.propTypes = {
     colour: PropTypes.object,
 }
 
-export default React.memo(({ colour, onClick }) => (
+export default React.memo(({ colour, onClick, dragging }) => (
     <ColourBlock
         rgb={getRGB(colour)}
-        onClick={onClick}
+        onClick={onClick || null}
+        className={dragging ? 'dragging' : null}
     />)
 );

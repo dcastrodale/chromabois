@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import GlobalStyles from '../../global-styles';
 import getRGB from '../../helpers/getRGB';
 
 import AvailableColoursList from '../AvailableColoursList';
 import SelectedColoursList from '../SelectedColoursList';
+import DropColourContainer from '../DropColourContainer';
 
 const AppOuter = styled.section`
     height: 100%;
@@ -45,6 +47,12 @@ const Lists = styled.section`
     position: relative;
 `;
 
+const Test = styled.section`
+    height: 200px;
+    width: 200px;
+    bordeR: 1px solid #000;
+`;
+
 class App extends Component {
     render() {
         const {
@@ -56,11 +64,13 @@ class App extends Component {
                 <AppWrapper>
                     <Header>
                         <H1>Colour Mixer</H1>
-                        <p>{this.props.UI.test}</p>
                     </Header>
                     <Lists>
                         <AvailableColoursList />
                         <SelectedColoursList />
+                        <Test>
+                            <DropColourContainer />
+                        </Test>
                     </Lists>
                     <GlobalStyles />
                 </AppWrapper>
@@ -76,4 +86,7 @@ const mapStateToProps = ({ colours, UI }) => {
     }
 }
 
+App.propTypes = {
+    colours: PropTypes.object
+}
 export default connect(mapStateToProps)(App);

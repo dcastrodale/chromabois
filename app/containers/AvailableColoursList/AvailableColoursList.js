@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { selectColour } from '../../actions/Colours';
 
+import DraggableContainer from '../DraggableContainer';
 import ColourList from '../../components/ColourList';
 import ColourBlock from '../../components/ColourBlock';
-import DraggableItem from '../../components/DraggableItem';
 
 class AvailableColoursList extends Component {
     handleClick(id) {
         this.props.selectColour(id);
+    }
+
+    // Factory that returns a composed function with colourID set
+    getDragFunction(colourID){
+        return (e) => {
+            e.dataTransfer.setData('colourID', colourID);
+        }
     }
 
     render() {
@@ -20,15 +28,19 @@ class AvailableColoursList extends Component {
 
         return (
             <ColourList title="available">
-                {available.map(colour => (
-                    <DraggableItem key={colour.id}>
-                        <ColourBlock
-                            colour={colour}
-                            onClick={() => this.handleClick(colour.id)}
+                {
+                    available.map(colour => (
+                        <DraggableContainer
                             key={colour.id}
-                        />
-                    </DraggableItem>
-                ))}
+                            handleDragStart={this.getDragFunction(colour.id)}
+                        >
+                            <ColourBlock
+                                colour={colour}
+                                dragging={this.props.dragging}
+                            />
+                        </DraggableContainer>
+                    ))
+                }
             </ColourList>
         );
     }
@@ -42,6 +54,10 @@ const mapStateToProps = ({ colours }) => {
     return {
         available: colours.available
     }
+}
+
+AvailableColoursList.propTypes = {
+    available: PropTypes.array
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AvailableColoursList);
